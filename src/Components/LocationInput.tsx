@@ -1,34 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import useEffectOnce from '../hooks/useEffectOnce';
 import {CurrentWeatherResponse } from '../Types';
+import { fetchCurrentWeather } from '../APIClient'
 
 interface LocationInputProps {
   currentWeather: CurrentWeatherResponse;
   setCurrentWeather: (currentWeatherObj: CurrentWeatherResponse) => void;
+  location: string;
+  setLocation: (location: string) => void;
 }
 
-export const LocationInput:React.FC<LocationInputProps>= ({ currentWeather, setCurrentWeather }) => {
+export const LocationInput:React.FC<LocationInputProps>= ({ currentWeather, setCurrentWeather, location, setLocation }) => {
   
-  const [location, setLocation] = useState("");
-  const [browserLoc, setBrowserLoc] = useState<any>({});
-
-  const baseUrl = 'http://api.weatherapi.com/v1';
-  const key = '397acc8ee0e44011a76162011221305';
-
-  useEffectOnce(() => {
-    if (window.navigator) {
-      navigator.geolocation.getCurrentPosition(setBrowserLoc)
-    }
-  });
-
-  useEffect(() => {
-    if (browserLoc?.coords?.latitude)
-      setLocation(`${browserLoc?.coords?.latitude},${browserLoc?.coords?.longitude}`);
-  }, [browserLoc])
-
   const fetchCurrent = () => {
-    fetch(`${baseUrl}/current.json?key=${key}&q=${location}`)
-    .then((res) => res.json())
+    fetchCurrentWeather(location)
     .then((data) => setCurrentWeather(data))
   }
 
