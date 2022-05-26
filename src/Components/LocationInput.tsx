@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {CurrentWeatherResponse } from '../Types';
 import { fetchCurrentWeather } from '../APIClient'
 
@@ -23,7 +23,7 @@ export const LocationInput:React.FC<LocationInputProps>= ({ currentWeather, setC
 
 
   return (
-    <div>
+    <div className='input-cont'>
       <input onChange={(e) => handleChange(e, setLocation)} value={location} type="text" placeholder="Location?" />
       <button onClick={fetchCurrent}>Current Weather</button>
     </div>

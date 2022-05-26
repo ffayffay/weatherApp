@@ -9,13 +9,14 @@ interface CurrentWeatherContProps {
 export const CurrentWeatherCont: React.FC<CurrentWeatherContProps> = ({ currentWeather }) => {
   console.log(currentWeather)
   return (
-    <div>
+    <div className='current-cont'>
       <h1>{currentWeather?.location?.name}, {currentWeather?.location?.region}</h1>
+      <div><h2>Currently:</h2></div>
       <div>
         <img src={currentWeather?.current?.condition?.icon} alt={currentWeather?.current?.condition?.text} />
       </div>
       <h3>{currentWeather?.current?.condition?.text}</h3>
-      <h4>Temp: {currentWeather?.current?.temp_f} Farenheit</h4>
+      <h4>Temp: {currentWeather?.current?.temp_f}</h4>
     </div>
   )
 }
