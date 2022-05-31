@@ -9,9 +9,9 @@ interface ForecastContProps {
 }
 
 export const ForecastCont: React.FC<ForecastContProps> = ({ location, browserLoc, weeklyWeather }) => {
-  return (
+return (
     <div className="forecast-cont">
-     { weeklyWeather.map((day: ForecastWeatherResponse, idx: number) => ( <DayCont weeklyWeather={day} />))}
+     { weeklyWeather.map((day: ForecastWeatherResponse, idx) => ( <DayCont weeklyWeather={day} key={idx + 1} />))}
     </div>
   )
 }

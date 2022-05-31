@@ -17,6 +17,10 @@ body {
   align-items: center;
 }
 
+.block {
+  display: inline-block;
+}
+
 .input-cont {
   width: 100%;
   margin-top: 30px;
@@ -35,6 +39,45 @@ body {
     display: flex;
     flex-direction: column;
     margin-top: 100px;
+}
+
+.currently {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.currently h2 {
+  align-self: center;
+}
+
+.current-main-items {
+  display: flex;
+}
+
+.current-item {
+  margin-right: 10px;
+}
+
+.current-img {
+  height: 95px;
+}
+
+.current-img img {
+  height: 100%;
+}
+
+.current-sub-items {
+  /* display: flex;
+  align-items: center; */
+  display: flex;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.current-sub-items span {
+  margin: 5px;
 }
 
 .forecast-cont {

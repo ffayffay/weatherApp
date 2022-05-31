@@ -1,87 +1,43 @@
-import React from 'react';
-import { CurrentWeatherResponse } from '../Types';
+import React from "react";
+import { CurrentWeatherResponse } from "../Types";
 
 interface CurrentWeatherContProps {
   currentWeather: CurrentWeatherResponse;
 }
 
-
-export const CurrentWeatherCont: React.FC<CurrentWeatherContProps> = ({ currentWeather }) => {
-  console.log(currentWeather)
+export const CurrentWeatherCont: React.FC<CurrentWeatherContProps> = ({
+  currentWeather,
+}) => {
+  console.log(currentWeather);
   return (
-    <div className='current-cont'>
-      <h1>{currentWeather?.location?.name}, {currentWeather?.location?.region}</h1>
-      <div><h2>Currently:</h2></div>
-      <div>
-        <img src={currentWeather?.current?.condition?.icon} alt={currentWeather?.current?.condition?.text} />
+    <div className="current-cont">
+      <h1>
+        {currentWeather?.location?.name}, {currentWeather?.location?.region}
+      </h1>
+      <div className="currently">
+      <div className="current-img current-item">
+            <img
+              src={currentWeather?.current?.condition?.icon}
+              alt={currentWeather?.current?.condition?.text}
+            />
+          </div>
+        <div className="current-main-items">
+         
+          <div className="block">
+            <h1 className="current-item block">
+              {currentWeather?.current?.temp_f}&#176;
+            </h1>
+            <h2 className="current-item block">
+              {currentWeather?.current?.condition?.text}
+            </h2>
+            <div className="current-sub-items">
+              <span><span>Feels Like: </span>{currentWeather?.current?.feelslike_f}&#176;</span>
+              <span><span>Humidity: </span>{currentWeather?.current?.humidity}%</span>
+              <span><span>Wind: </span>{currentWeather?.current?.wind_mph}MPH</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <h3>{currentWeather?.current?.condition?.text}</h3>
-      <h4>Temp: {currentWeather?.current?.temp_f}</h4>
     </div>
-  )
-}
-
-//Object { location: {…}, current: {…} }
-// ​
-// current: Object { last_updated_epoch: 1652818500, last_updated: "2022-05-17 16:15", temp_c: 28.9, … }
-// ​​
-// cloud: 50
-// ​​
-// condition: Object { text: "Partly cloudy", icon: "//cdn.weatherapi.com/weather/64x64/day/116.png", code: 1003 }
-// ​​​
-// code: 1003
-// ​​​
-// icon: "//cdn.weatherapi.com/weather/64x64/day/116.png"
-// ​​​
-// text: "Partly cloudy"
-// ​​​
-// <prototype>: Object { … }
-// ​​
-// feelslike_c: 29.1
-// ​​
-// feelslike_f: 84.4
-// ​​
-// gust_kph: 15.8
-// ​​
-// gust_mph: 9.8
-// ​​
-// humidity: 30
-// ​​
-// is_day: 1
-// ​​
-// last_updated: "2022-05-17 16:15"
-// ​​
-// last_updated_epoch: 1652818500
-// ​​
-// precip_in: 0
-// ​​
-// precip_mm: 0
-// ​​
-// pressure_in: 29.99
-// ​​
-// pressure_mb: 1016
-// ​​
-// temp_c: 28.9
-// ​​
-// temp_f: 84
-// ​​
-// uv: 7
-// ​​
-// vis_km: 16
-// ​​
-// vis_miles: 9
-// ​​
-// wind_degree: 280
-// ​​
-// wind_dir: "W"
-// ​​
-// wind_kph: 11.2
-// ​​
-// wind_mph: 6.9
-// ​​
-// <prototype>: Object { … }
-// ​
-// location: Object { name: "Port Fulton", region: "Indiana", country: "United States of America", … }
-// ​
-// <prototype>: Object { … }
-// LocationInput.tsx:24
+  );
+};

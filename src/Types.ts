@@ -6,6 +6,9 @@ export interface CurrentWeatherResponse {
 export interface Current {
   condition: Condition;
   temp_f: number;
+  feelslike_f: number;
+  humidity: number;
+  wind_mph: number;
 }
 
 export interface Location {
@@ -23,6 +26,7 @@ export interface Condition {
 
 export interface ForecastWeatherResponse {
   date: string;
+  date_epoch: number;
   day: Day;
 }
 

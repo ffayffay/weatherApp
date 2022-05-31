@@ -6,9 +6,16 @@ interface DayContProps {
 }
 
 export const DayCont: React.FC<DayContProps> = ({ weeklyWeather }) => {
+
+  function formatDate(weeklyWeather: ForecastWeatherResponse) {
+    const date = new Date(weeklyWeather.date.replace(/-/g, '\/'));
+    console.log("date", date)
+    return date.toLocaleDateString();
+  }
+
   return (
     <div className="day-cont">
-      <h3>{weeklyWeather?.date}</h3>
+      <h3>{formatDate(weeklyWeather)}</h3>
       <div>
         <div className="img-cont">
           <img
@@ -21,10 +28,10 @@ export const DayCont: React.FC<DayContProps> = ({ weeklyWeather }) => {
 
       <div>
         <div>
-          <p>Min Temp: {weeklyWeather?.day?.mintemp_f}</p>
+          <p>Min Temp: {weeklyWeather?.day?.mintemp_f}&#176;</p>
         </div>
         <div>
-          <p>Max Temp: {weeklyWeather?.day?.maxtemp_f}</p>
+          <p>Max Temp: {weeklyWeather?.day?.maxtemp_f}&#176;</p>
         </div>
       </div>
     </div>
